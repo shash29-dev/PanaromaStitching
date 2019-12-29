@@ -56,7 +56,8 @@ Final Results can be compared.
 
 ### Dependencies
 
--- opencv + opencv contrib [To use SIFT and SURF]
--- imutils
--- matplotlib
-
+```
+* opencv + opencv contrib [To use SIFT and SURF]
+* imutils
+* matplotlib
+```
