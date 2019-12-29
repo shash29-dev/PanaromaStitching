@@ -1,86 +1,47 @@
-# Panaroma Stitching Helper Functions
 
-![Project Image](./Result/A1/PanaromaI2_3.png)
+### Helper Class For Panaroma Stitching
 
+This Repository provides helper function to estimate correspondences between two images and estimate Homography matrix. This can be the used to stitch Images to make a panaroma.
 
-### Table of Contents
-- [Panaroma Stitching Helper Functions](#panaroma-stitching-helper-functions)
-    - [Table of Contents](#table-of-contents)
-  - [Description](#description)
-      - [Technologies](#technologies)
-  - [How To Use](#how-to-use)
-      - [Installation](#installation)
-      - [API Reference](#api-reference)
-  - [References](#references)
-  - [License](#license)
-  - [Author Info](#author-info)
+<p align="center">
+    <img src="./Result/A1/PanaromaI2_3.png">
+</p>
 
----
-
-## Description
-
-Creating ReadMe's for your Github repository can be tedious.  I hope this template can save you time and effort as well as provide you with some consistency across your projects.
-
-#### Technologies
-
-- Technology 1
-- Technology 2
-
-[Back To The Top](#read-me-template)
-
----
-
-## How To Use
-
-#### Installation
-
-
-
-#### API Reference
-
-```html
-    <p>dummy code</p>
+### Usage
 ```
-[Back To The Top](#read-me-template)
+instance=PanaromaStitcher()
+```
 
----
+##### Correspondence Between Image Pairs
 
-## References
-[Back To The Top](#read-me-template)
+This method takes ImagePair as input and finds Correspondence based on Given Algorithm (SIFT,SURF). Correspondences below threshold level are rejected,set by giving diatance ratio.   
 
----
 
-## License
+  
 
-MIT License
+```
+instance.FindCorrespondences(ImagePair, Algo='SIFT', ratio=0.75)
 
-Copyright (c) [2017] [James Q Quick]
+CORRESPONDING POINTS IN IMAGES CAN BE OBTAINED AS
+instance.ptsA  -----> instance.ptsB
+```
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+##### Find Homography Matrix
+Finds Homography matrix based on correpondence points found for the Image pair. Fails if matched points are less than four. Uses RANSAC method to detect outliers in correspondences and reject them during computation.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+```
+instance.FindHomographyMatrix()
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+HOMOGRAPHY MATRIX:
+instance.H
 
-[Back To The Top](#read-me-template)
+```
+##### Stitching
 
----
+Stitches Image based on Homography matrix. Gives option whether stitch from left or right.
 
-## Author Info
+```
+instance.ImageStitcher(stitch='R')
 
-- Twitter - [@jamesqquick](https://twitter.com/jamesqquick)
-- Website - [James Q Quick](https://jamesqquick.com)
-
-[Back To The Top](#read-me-template)
+Returns: Stitched Result
+```
