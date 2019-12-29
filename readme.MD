@@ -1,7 +1,7 @@
 
 ### Helper Class For Panaroma Stitching
 
-This Repository provides helper function to estimate correspondences between two images and estimate Homography matrix. This can be the used to stitch Images to make a panaroma.
+This Repository implements helper function from scratch to estimate correspondences between two images and estimate Homography matrix. This can be the used to stitch Images to make a panaroma.
 
 <p align="center">
     <img src="./Result/A1/PanaromaI2_3.png">
