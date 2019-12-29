@@ -45,3 +45,12 @@ instance.ImageStitcher(stitch='R')
 
 Returns: Stitched Result
 ```
+
+### Demo
+
+```
+Run Source/test.py to stitch Images in 'Images' folder.
+```
+Also inbuiltFuncPanaroma() Function is given in demo which uses cv2 inbuilt function cv2.findHomography, cv2.RANSAC and cv2.warpPerspective function to obtain Panaroma.
+Final Results can be compared.
+
