@@ -14,7 +14,7 @@ instance=PanaromaStitcher()
 
 ##### Correspondence Between Image Pairs
 
-This method takes ImagePair as input and finds Correspondence based on Given Algorithm (SIFT,SURF). Correspondences below threshold level are rejected,set by giving diatance ratio.   
+This method takes ImagePair as input and finds Correspondence based on Given Algorithm (SIFT,SURF). Correspondences below threshold level are rejected,set by giving distance ratio.   
 
 
   
@@ -27,7 +27,7 @@ instance.ptsA  -----> instance.ptsB
 ```
 
 ##### Find Homography Matrix
-Finds Homography matrix based on correpondence points found for the Image pair. Fails if matched points are less than four. Uses RANSAC method to detect outliers in correspondences and reject them during computation.
+Finds Homography matrix based on correpondence points found for the Image pair. To find Homography Matrix, minimum Four point correspondence must exist. Raises error if correspondences less than four. Uses RANSAC to detect outliers in correspondences and reject them during computation.
 
 ```
 instance.FindHomographyMatrix()
